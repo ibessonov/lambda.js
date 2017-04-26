@@ -70,6 +70,7 @@ Nil    = f => x => x
 Append = a => l => (f => x => f (a) (l (f) (x)))
 
 Head   = l => l (a => x => a) ()
+list = Append (1) (Append (2) (Nil))
 console.assert(1 == Head (list))
 
 Tail = l => Fst (
@@ -77,7 +78,6 @@ Tail = l => Fst (
                       (Append (a) (Snd (p))))
       (Pair (Nil) (Nil))
 )
-list = Append (1) (Append (2) (Nil))
 console.assert(2 == Head (Tail (list)))
 
 Foldr   = f => z => l => l (f) (z)
